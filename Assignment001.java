@@ -91,6 +91,8 @@ public class Assignment001 {
                 .when()
                 .delete(delete_apiPathOfPetDetails);
         System.out.println("DELETE call validation ");
+        String idInResponse = res.getBody().jsonPath().getString("id");
+        System.out.println("Value of id in response after delete call: "+idInResponse);
         //validate the status code
         String newStatus_code = String.valueOf(res.statusCode()); // converting response.statusCode from int to String
         Assert.assertEquals(newStatus_code,"200");
@@ -187,6 +189,7 @@ Value of id in response is: 2003
 Value of name in response is: Tiger
 DELETE call validation
 The status code after delete call is: 200
+Value of id in response after delete call: null
 Expected message after delete{"code":200,"type":"unknown","message":"2003"}
 Response message after delete: {"code":200,"type":"unknown","message":"2003"}
 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.018 s - in TestSuite
